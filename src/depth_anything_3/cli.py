@@ -149,6 +149,9 @@ def auto(
         "saddle_balanced",
         help="Reference view selection strategy: empty, first, middle, saddle_balanced, saddle_sim_range",
     ),
+    infer_gs: bool = typer.Option(
+        False, help="Enable 3D Gaussian Splatting prediction (requires model with GS head)"
+    ),
     # GLB export options
     conf_thresh_percentile: float = typer.Option(
         40.0, help="[GLB] Lower percentile for adaptive confidence threshold"
@@ -216,6 +219,7 @@ def auto(
             export_feat_layers=export_feat_layers,
             use_ray_pose=use_ray_pose,
             ref_view_strategy=ref_view_strategy,
+            infer_gs=infer_gs,
             conf_thresh_percentile=conf_thresh_percentile,
             num_max_points=num_max_points,
             show_cameras=show_cameras,
@@ -243,6 +247,7 @@ def auto(
             export_feat_layers=export_feat_layers,
             use_ray_pose=use_ray_pose,
             ref_view_strategy=ref_view_strategy,
+            infer_gs=infer_gs,
             conf_thresh_percentile=conf_thresh_percentile,
             num_max_points=num_max_points,
             show_cameras=show_cameras,
@@ -270,6 +275,7 @@ def auto(
             export_feat_layers=export_feat_layers,
             use_ray_pose=use_ray_pose,
             ref_view_strategy=ref_view_strategy,
+            infer_gs=infer_gs,
             conf_thresh_percentile=conf_thresh_percentile,
             num_max_points=num_max_points,
             show_cameras=show_cameras,
@@ -302,6 +308,7 @@ def auto(
             align_to_input_ext_scale=align_to_input_ext_scale,
             use_ray_pose=use_ray_pose,
             ref_view_strategy=ref_view_strategy,
+            infer_gs=infer_gs,
             conf_thresh_percentile=conf_thresh_percentile,
             num_max_points=num_max_points,
             show_cameras=show_cameras,
@@ -342,6 +349,9 @@ def image(
         "saddle_balanced",
         help="Reference view selection strategy: empty, first, middle, saddle_balanced, saddle_sim_range",
     ),
+    infer_gs: bool = typer.Option(
+        False, help="Enable 3D Gaussian Splatting prediction (requires model with GS head)"
+    ),
     # GLB export options
     conf_thresh_percentile: float = typer.Option(
         40.0, help="[GLB] Lower percentile for adaptive confidence threshold"
@@ -380,7 +390,8 @@ def image(
         process_res_method=process_res_method,
         export_feat_layers=export_feat_layers,
         use_ray_pose=use_ray_pose,
-        reference_view_strategy=reference_view_strategy,
+        ref_view_strategy=ref_view_strategy,
+        infer_gs=infer_gs,
         conf_thresh_percentile=conf_thresh_percentile,
         num_max_points=num_max_points,
         show_cameras=show_cameras,
@@ -421,6 +432,9 @@ def images(
         "saddle_balanced",
         help="Reference view selection strategy: empty, first, middle, saddle_balanced, saddle_sim_range",
     ),
+    infer_gs: bool = typer.Option(
+        False, help="Enable 3D Gaussian Splatting prediction (requires model with GS head)"
+    ),
     # GLB export options
     conf_thresh_percentile: float = typer.Option(
         40.0, help="[GLB] Lower percentile for adaptive confidence threshold"
@@ -459,7 +473,8 @@ def images(
         process_res_method=process_res_method,
         export_feat_layers=export_feat_layers,
         use_ray_pose=use_ray_pose,
-        reference_view_strategy=reference_view_strategy,
+        ref_view_strategy=ref_view_strategy,
+        infer_gs=infer_gs,
         conf_thresh_percentile=conf_thresh_percentile,
         num_max_points=num_max_points,
         show_cameras=show_cameras,
@@ -505,6 +520,9 @@ def colmap(
         "saddle_balanced",
         help="Reference view selection strategy: empty, first, middle, saddle_balanced, saddle_sim_range",
     ),
+    infer_gs: bool = typer.Option(
+        False, help="Enable 3D Gaussian Splatting prediction (requires model with GS head)"
+    ),
     # GLB export options
     conf_thresh_percentile: float = typer.Option(
         40.0, help="[GLB] Lower percentile for adaptive confidence threshold"
@@ -546,7 +564,8 @@ def colmap(
         intrinsics=intrinsics,
         align_to_input_ext_scale=align_to_input_ext_scale,
         use_ray_pose=use_ray_pose,
-        reference_view_strategy=reference_view_strategy,
+        ref_view_strategy=ref_view_strategy,
+        infer_gs=infer_gs,
         conf_thresh_percentile=conf_thresh_percentile,
         num_max_points=num_max_points,
         show_cameras=show_cameras,
@@ -584,6 +603,9 @@ def video(
     ref_view_strategy: str = typer.Option(
         "saddle_balanced",
         help="Reference view selection strategy: empty, first, middle, saddle_balanced, saddle_sim_range",
+    ),
+    infer_gs: bool = typer.Option(
+        False, help="Enable 3D Gaussian Splatting prediction (requires model with GS head)"
     ),
     # GLB export options
     conf_thresh_percentile: float = typer.Option(
@@ -623,7 +645,8 @@ def video(
         process_res_method=process_res_method,
         export_feat_layers=export_feat_layers,
         use_ray_pose=use_ray_pose,
-        reference_view_strategy=reference_view_strategy,
+        ref_view_strategy=ref_view_strategy,
+        infer_gs=infer_gs,
         conf_thresh_percentile=conf_thresh_percentile,
         num_max_points=num_max_points,
         show_cameras=show_cameras,

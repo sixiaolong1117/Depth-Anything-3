@@ -103,7 +103,7 @@ def apply_color_map(
     x: torch.Tensor,  # " *batch"
     color_map: str = "inferno",
 ) -> torch.Tensor:  # "*batch 3"
-    cmap = matplotlib.cm.get_cmap(color_map)
+    cmap = matplotlib.colormaps[color_map]
 
     # Convert to NumPy so that Matplotlib color maps can be used.
     mapped = cmap(x.float().detach().clip(min=0, max=1).cpu().numpy())[..., :3]

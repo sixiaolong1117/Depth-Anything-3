@@ -58,6 +58,7 @@ class InferenceService:
         conf_thresh_percentile: float = 40.0,
         num_max_points: int = 1_000_000,
         show_cameras: bool = True,
+        infer_gs: bool = False,
         feat_vis_fps: int = 15,
     ) -> Any:
         """Run local inference"""
@@ -77,6 +78,7 @@ class InferenceService:
             "align_to_input_ext_scale": align_to_input_ext_scale,
             "use_ray_pose": use_ray_pose,
             "ref_view_strategy": ref_view_strategy,
+            "infer_gs": infer_gs,
             "conf_thresh_percentile": conf_thresh_percentile,
             "num_max_points": num_max_points,
             "show_cameras": show_cameras,
@@ -115,6 +117,7 @@ class InferenceService:
         conf_thresh_percentile: float = 40.0,
         num_max_points: int = 1_000_000,
         show_cameras: bool = True,
+        infer_gs: bool = False,
         feat_vis_fps: int = 15,
     ) -> Dict[str, Any]:
         """Run backend inference"""
@@ -136,6 +139,7 @@ class InferenceService:
             "align_to_input_ext_scale": align_to_input_ext_scale,
             "use_ray_pose": use_ray_pose,
             "ref_view_strategy": ref_view_strategy,
+            "infer_gs": infer_gs,
             "conf_thresh_percentile": conf_thresh_percentile,
             "num_max_points": num_max_points,
             "show_cameras": show_cameras,
@@ -202,6 +206,7 @@ def run_inference(
     conf_thresh_percentile: float = 40.0,
     num_max_points: int = 1_000_000,
     show_cameras: bool = True,
+    infer_gs: bool = False,
     feat_vis_fps: int = 15,
 ) -> Union[Any, Dict[str, Any]]:
     """Unified inference interface"""
@@ -225,6 +230,7 @@ def run_inference(
             conf_thresh_percentile=conf_thresh_percentile,
             num_max_points=num_max_points,
             show_cameras=show_cameras,
+            infer_gs=infer_gs,
             feat_vis_fps=feat_vis_fps,
         )
     else:
@@ -243,5 +249,6 @@ def run_inference(
             conf_thresh_percentile=conf_thresh_percentile,
             num_max_points=num_max_points,
             show_cameras=show_cameras,
+            infer_gs=infer_gs,
             feat_vis_fps=feat_vis_fps,
         )
